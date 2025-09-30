@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import Link from 'next/link';
 import ColorModeIconDropdown from '@/shared-theme/ColorModeIconDropdown';
-import Sitemark from './SitemarkIcon';
+import Sitemark from '@/app/components/marketing/SitemarkIcon';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -31,7 +31,11 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   padding: '8px 12px',
 }));
 
-export default function AppAppBar() {
+interface AppAppBarProps {
+  useNextLinks?: boolean;
+}
+
+export default function AppAppBar({ useNextLinks = false }: AppAppBarProps) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -74,8 +78,7 @@ export default function AppAppBar() {
                 color="info"
                 size="small"
                 sx={{ minWidth: 0 }}
-                component={Link}
-                href="/blog"
+                {...(useNextLinks && { component: Link, href: "/blog" })}
               >
                 Blog
               </Button>
@@ -88,10 +91,10 @@ export default function AppAppBar() {
               alignItems: 'center',
             }}
           >
-            <Button color="primary" variant="text" size="small" component={Link} href="/sign-in">
+            <Button color="primary" variant="text" size="small" {...(useNextLinks && { component: Link, href: "/sign-in" })}>
               Sign in
             </Button>
-            <Button color="primary" variant="contained" size="small" component={Link} href="/sign-up">
+            <Button color="primary" variant="contained" size="small" {...(useNextLinks && { component: Link, href: "/sign-up" })}>
               Sign up
             </Button>
             <ColorModeIconDropdown />
@@ -128,15 +131,32 @@ export default function AppAppBar() {
                 <MenuItem>Highlights</MenuItem>
                 <MenuItem>Pricing</MenuItem>
                 <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                <MenuItem
+                  {...(useNextLinks && { component: Link, href: "/blog" })}
+                  onClick={() => toggleDrawer(false)()}
+                >
+                  Blog
+                </MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    fullWidth
+                    {...(useNextLinks && { component: Link, href: "/sign-up" })}
+                    onClick={() => toggleDrawer(false)()}
+                  >
                     Sign up
                   </Button>
                 </MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    fullWidth
+                    {...(useNextLinks && { component: Link, href: "/sign-in" })}
+                    onClick={() => toggleDrawer(false)()}
+                  >
                     Sign in
                   </Button>
                 </MenuItem>

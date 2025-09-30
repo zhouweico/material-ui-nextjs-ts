@@ -1,15 +1,15 @@
 'use client';
 import * as React from 'react';
 import Container from '@mui/material/Container';
-import AppAppBar from './components/AppAppBar';
+import AppAppBar from '../../components/AppAppBar';
 import MainContent from './components/MainContent';
 import Latest from './components/Latest';
-import Footer from './components/Footer';
+import Footer from '../../components/Footer';
 
 export default function Blog() {
   return (
     <React.Fragment>
-      <AppAppBar />
+      <AppAppBar useNextLinks={true} />
       <Container
         maxWidth="lg"
         component="main"
