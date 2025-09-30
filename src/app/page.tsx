@@ -2,13 +2,13 @@
 import * as React from 'react';
 import Divider from '@mui/material/Divider';
 import AppAppBar from '../components/AppAppBar';
-import Hero from './components/marketing/Hero';
-import LogoCollection from './components/marketing/LogoCollection';
-import Highlights from './components/marketing/Highlights';
-import Pricing from './components/marketing/Pricing';
-import Features from './components/marketing/Features';
-import Testimonials from './components/marketing/Testimonials';
-import FAQ from './components/marketing/FAQ';
+import Hero from './marketing/Hero';
+import LogoCollection from './marketing/LogoCollection';
+import Highlights from './marketing/Highlights';
+import Pricing from './marketing/Pricing';
+import Features from './marketing/Features';
+import Testimonials from './marketing/Testimonials';
+import FAQ from './marketing/FAQ';
 import Footer from '../components/Footer';
 
 export default function Home() {
